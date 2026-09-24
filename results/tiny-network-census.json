@@ -1,0 +1,37 @@
+{
+  "block_table_rows": 9360,
+  "boundary": "A complete census only for this explicitly declared tiny family; it is not exhaustive over all bounded networks.",
+  "cell_exponent": 1,
+  "concrete_input_rows": 6912,
+  "definition": "All 3 first-pair topologies, both fixed signs, all ordered precision pairs in {3,4,5}^2, all ordered rounding-mode pairs in {rne,rup,rdn,rtz}^2, and all 2^3 source tuples.",
+  "delta_exp": -4,
+  "dimensions": {
+    "first_pair_topologies": [
+      "ab-then-c",
+      "ac-then-b",
+      "bc-then-a"
+    ],
+    "rounding_modes": [
+      "rne",
+      "rup",
+      "rdn",
+      "rtz"
+    ],
+    "signs": [
+      "negative",
+      "positive"
+    ],
+    "source_support_size_per_input": 2,
+    "target_precisions": [
+      3,
+      4,
+      5
+    ]
+  },
+  "expected_networks": 864,
+  "max_depth": 2,
+  "max_gates": 2,
+  "networks": 864,
+  "phase_input_rows": 6912,
+  "status": "complete-over-declared-finite-axes"
+}

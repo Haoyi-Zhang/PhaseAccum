@@ -1,0 +1,27 @@
+{
+  "bounded_newest_work_records": 1,
+  "citation_context_keys": 59,
+  "citation_context_rows": 63,
+  "complete_adjacent_papers": 5,
+  "complete_influential_papers": 5,
+  "complete_same_venue_papers": 12,
+  "corrected_identifiers_checked": {
+    "gilot2026github": "DOI: 10.1145/3798203",
+    "gilot2026stainless": "DOI: 10.1007/978-3-032-22749-2_1",
+    "ieee2019": "DOI: 10.1109/IEEESTD.2019.8766229",
+    "niemetz2024": "DOI: 10.1007/978-3-031-65627-9_9",
+    "ogita2005": "DOI: 10.1137/030601818",
+    "park2026": "DOI: 10.48550/arXiv.2601.17198",
+    "zhang2025": "DOI: 10.1007/978-3-031-98682-6_12"
+  },
+  "duplicate_identifiers": 0,
+  "duplicate_titles": 0,
+  "external_resource_records": 31,
+  "frozen_reference_count": 59,
+  "minimum_reference_target": 55,
+  "reference_entries": 59,
+  "scope": "structural inventory and calibration audit; not a substitute for live metadata resolution or full-paper reading",
+  "status": "passed",
+  "unique_cite_keys": 59,
+  "unverified_live_guide_records": 1
+}

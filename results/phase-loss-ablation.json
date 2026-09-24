@@ -1,0 +1,33 @@
+{
+  "cartesianized_dyadic_exponent": 0,
+  "cartesianized_final_loss_units": [
+    -12,
+    -4,
+    4,
+    12
+  ],
+  "cut_rows": [
+    {
+      "cut_value_units": 160,
+      "incoming_loss_units": -4,
+      "input_units": 156,
+      "next_loss_units": 8,
+      "phase_units": 0
+    },
+    {
+      "cut_value_units": 176,
+      "incoming_loss_units": 4,
+      "input_units": 180,
+      "next_loss_units": -8,
+      "phase_units": 16
+    }
+  ],
+  "delta_exp": -4,
+  "exact_dyadic_exponent": -2,
+  "exact_final_loss_units": [
+    -4,
+    4
+  ],
+  "interpretation": "Two-bit inflation from separating the cut phase and signed incoming loss.",
+  "modulus_units": 32
+}

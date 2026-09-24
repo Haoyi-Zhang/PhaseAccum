@@ -1,0 +1,75 @@
+{
+  "status": "passed",
+  "worker_count": 1,
+  "format_precision": 4,
+  "oracle": "enumerated neighboring finite values",
+  "phase_rows": [
+    {
+      "gap": 1,
+      "phases": 4,
+      "contexts": 4,
+      "two_gate_signature_classes": 4,
+      "single_gate_absolute_classes": 2,
+      "oracle_gate_evaluations": 32
+    },
+    {
+      "gap": 2,
+      "phases": 8,
+      "contexts": 8,
+      "two_gate_signature_classes": 8,
+      "single_gate_absolute_classes": 4,
+      "oracle_gate_evaluations": 128
+    },
+    {
+      "gap": 3,
+      "phases": 16,
+      "contexts": 16,
+      "two_gate_signature_classes": 16,
+      "single_gate_absolute_classes": 8,
+      "oracle_gate_evaluations": 512
+    },
+    {
+      "gap": 4,
+      "phases": 32,
+      "contexts": 32,
+      "two_gate_signature_classes": 32,
+      "single_gate_absolute_classes": 16,
+      "oracle_gate_evaluations": 2048
+    },
+    {
+      "gap": 5,
+      "phases": 64,
+      "contexts": 64,
+      "two_gate_signature_classes": 64,
+      "single_gate_absolute_classes": 32,
+      "oracle_gate_evaluations": 8192
+    },
+    {
+      "gap": 6,
+      "phases": 128,
+      "contexts": 128,
+      "two_gate_signature_classes": 128,
+      "single_gate_absolute_classes": 64,
+      "oracle_gate_evaluations": 32768
+    }
+  ],
+  "same_run_count_witness": [
+    {
+      "x": "161/16",
+      "c": "7/16",
+      "s": "10",
+      "out": "10",
+      "signed_error": "-1"
+    },
+    {
+      "x": "177/16",
+      "c": "7/16",
+      "s": "12",
+      "out": "12",
+      "signed_error": "0"
+    }
+  ],
+  "wall_seconds": 0.6470560630000364,
+  "cpu_seconds": 0.6425092270000001,
+  "peak_rss_kib": 93360
+}

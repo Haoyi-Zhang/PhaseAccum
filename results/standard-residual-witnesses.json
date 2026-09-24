@@ -1,0 +1,78 @@
+[
+  {
+    "coarse_target_precision": 11,
+    "id": "witness-binary32-binary16",
+    "input": "8392703/8388608",
+    "representable_in_coarse_target": false,
+    "residual": "4095/8388608",
+    "residual_significand_bits": 12,
+    "rounded": "1",
+    "source_format": {
+      "emax": 127,
+      "emin": -126,
+      "p": 24
+    },
+    "target_format": {
+      "emax": 15,
+      "emin": -14,
+      "p": 11
+    }
+  },
+  {
+    "coarse_target_precision": 24,
+    "id": "witness-binary64-binary32",
+    "input": "4503599895805951/4503599627370496",
+    "representable_in_coarse_target": false,
+    "residual": "268435455/4503599627370496",
+    "residual_significand_bits": 28,
+    "rounded": "1",
+    "source_format": {
+      "emax": 1023,
+      "emin": -1022,
+      "p": 53
+    },
+    "target_format": {
+      "emax": 127,
+      "emin": -126,
+      "p": 24
+    }
+  },
+  {
+    "coarse_target_precision": 8,
+    "id": "witness-binary32-bfloat16",
+    "input": "8421375/8388608",
+    "representable_in_coarse_target": false,
+    "residual": "32767/8388608",
+    "residual_significand_bits": 15,
+    "rounded": "1",
+    "source_format": {
+      "emax": 127,
+      "emin": -126,
+      "p": 24
+    },
+    "target_format": {
+      "emax": 127,
+      "emin": -126,
+      "p": 8
+    }
+  },
+  {
+    "coarse_target_precision": 11,
+    "id": "witness-binary64-binary16",
+    "input": "4505798650626047/4503599627370496",
+    "representable_in_coarse_target": false,
+    "residual": "2199023255551/4503599627370496",
+    "residual_significand_bits": 41,
+    "rounded": "1",
+    "source_format": {
+      "emax": 1023,
+      "emin": -1022,
+      "p": 53
+    },
+    "target_format": {
+      "emax": 15,
+      "emin": -14,
+      "p": 11
+    }
+  }
+]

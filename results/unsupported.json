@@ -1,0 +1,27 @@
+[
+  {
+    "id": "boundary-crossing",
+    "reason": "uncertified rounding cell",
+    "rejected": true
+  },
+  {
+    "id": "rtz-sign-crossing",
+    "reason": "zero-crossing RTZ cell needs sign split",
+    "rejected": true
+  },
+  {
+    "id": "overflow-envelope",
+    "reason": "uncertified rounding cell",
+    "rejected": true
+  },
+  {
+    "id": "duplicate-wire",
+    "reason": "gate arity or duplicate consumption",
+    "rejected": true
+  },
+  {
+    "id": "residual-not-representable",
+    "reason": "unrepresentable exact residual",
+    "rejected": true
+  }
+]

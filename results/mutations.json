@@ -1,0 +1,102 @@
+[
+  {
+    "mutation": "boolean-in-integer-row",
+    "reason": "incomplete or inaccurate global phase table",
+    "rejected": true
+  },
+  {
+    "mutation": "incorrect-tight-bound",
+    "reason": "tight absolute error",
+    "rejected": true
+  },
+  {
+    "mutation": "incorrect-power-envelope",
+    "reason": "nearest-bit envelope",
+    "rejected": true
+  },
+  {
+    "mutation": "missing-source-phase",
+    "reason": "incomplete or inaccurate global phase table",
+    "rejected": true
+  },
+  {
+    "mutation": "missing-block-phase",
+    "reason": "incomplete or inaccurate block relation",
+    "rejected": true
+  },
+  {
+    "mutation": "duplicate-global-row",
+    "reason": "incomplete or inaccurate global phase table",
+    "rejected": true
+  },
+  {
+    "mutation": "duplicate-block-row",
+    "reason": "incomplete or inaccurate block relation",
+    "rejected": true
+  },
+  {
+    "mutation": "surplus-global-phase",
+    "reason": "incomplete or inaccurate global phase table",
+    "rejected": true
+  },
+  {
+    "mutation": "out-of-domain-global-phase",
+    "reason": "incomplete or inaccurate global phase table",
+    "rejected": true
+  },
+  {
+    "mutation": "corrupt-signed-loss",
+    "reason": "incomplete or inaccurate global phase table",
+    "rejected": true
+  },
+  {
+    "mutation": "corrupt-block-output-phase",
+    "reason": "incomplete or inaccurate block relation",
+    "rejected": true
+  },
+  {
+    "mutation": "corrupt-block-input-name",
+    "reason": "incomplete or inaccurate block relation",
+    "rejected": true
+  },
+  {
+    "mutation": "corrupt-block-boundary",
+    "reason": "incomplete or inaccurate block relation",
+    "rejected": true
+  },
+  {
+    "mutation": "changed-rounding-stale-contract",
+    "reason": "incomplete or inaccurate global phase table",
+    "rejected": true
+  },
+  {
+    "mutation": "false-cell-guard",
+    "reason": "rounding cell enclosure",
+    "rejected": true
+  },
+  {
+    "mutation": "changed-format-stale-contract",
+    "reason": "incomplete or inaccurate global phase table",
+    "rejected": true
+  },
+  {
+    "mutation": "changed-legal-topology-stale-contract",
+    "reason": "incomplete or inaccurate global phase table",
+    "rejected": true
+  },
+  {
+    "mutation": "changed-cut-partition-stale-contract",
+    "reason": "block count",
+    "rejected": true
+  },
+  {
+    "mutation": "duplicate-wire-consumption",
+    "reason": "arity",
+    "rejected": true
+  },
+  {
+    "mutation": "correlation-erased-stale-contract",
+    "reason": "incomplete or inaccurate global phase table",
+    "rejected": true
+  }
+]

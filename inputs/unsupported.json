@@ -1,0 +1,402 @@
+[
+  {
+    "cuts": [
+      1
+    ],
+    "delta_exp": -4,
+    "gates": [
+      {
+        "args": [
+          "x",
+          "c"
+        ],
+        "cell": {
+          "exponent": 3,
+          "kind": "normal",
+          "sign": 1
+        },
+        "format": {
+          "emax": 10,
+          "emin": -10,
+          "p": 4
+        },
+        "kind": "add",
+        "mode": "rne",
+        "out": [
+          "s"
+        ]
+      },
+      {
+        "args": [
+          "s",
+          "d"
+        ],
+        "cell": {
+          "exponent": 3,
+          "kind": "normal",
+          "sign": 1
+        },
+        "format": {
+          "emax": 10,
+          "emin": -10,
+          "p": 4
+        },
+        "kind": "add",
+        "mode": "rne",
+        "out": [
+          "z"
+        ]
+      }
+    ],
+    "id": "boundary-crossing",
+    "inputs": [
+      {
+        "format": {
+          "emax": 10,
+          "emin": -10,
+          "p": 8
+        },
+        "name": "x",
+        "values": [
+          127,
+          129
+        ]
+      },
+      {
+        "format": {
+          "emax": 10,
+          "emin": -10,
+          "p": 8
+        },
+        "name": "c",
+        "values": [
+          0
+        ]
+      },
+      {
+        "format": {
+          "emax": 10,
+          "emin": -10,
+          "p": 8
+        },
+        "name": "d",
+        "values": [
+          8
+        ]
+      }
+    ],
+    "outputs": [
+      "z"
+    ]
+  },
+  {
+    "cuts": [],
+    "delta_exp": -4,
+    "gates": [
+      {
+        "args": [
+          "x"
+        ],
+        "cell": {
+          "kind": "subnormal"
+        },
+        "format": {
+          "emax": 10,
+          "emin": 0,
+          "p": 3
+        },
+        "kind": "cast",
+        "mode": "rtz",
+        "out": [
+          "z"
+        ]
+      }
+    ],
+    "id": "rtz-sign-crossing",
+    "inputs": [
+      {
+        "format": {
+          "emax": 10,
+          "emin": -10,
+          "p": 8
+        },
+        "name": "x",
+        "values": [
+          -1,
+          0,
+          1
+        ]
+      }
+    ],
+    "outputs": [
+      "z"
+    ]
+  },
+  {
+    "cuts": [
+      1
+    ],
+    "delta_exp": -4,
+    "gates": [
+      {
+        "args": [
+          "x",
+          "c"
+        ],
+        "cell": {
+          "exponent": 3,
+          "kind": "normal",
+          "sign": 1
+        },
+        "format": {
+          "emax": 3,
+          "emin": -10,
+          "p": 4
+        },
+        "kind": "add",
+        "mode": "rne",
+        "out": [
+          "s"
+        ]
+      },
+      {
+        "args": [
+          "s",
+          "d"
+        ],
+        "cell": {
+          "exponent": 3,
+          "kind": "normal",
+          "sign": 1
+        },
+        "format": {
+          "emax": 10,
+          "emin": -10,
+          "p": 4
+        },
+        "kind": "add",
+        "mode": "rne",
+        "out": [
+          "z"
+        ]
+      }
+    ],
+    "id": "overflow-envelope",
+    "inputs": [
+      {
+        "format": {
+          "emax": 10,
+          "emin": -10,
+          "p": 8
+        },
+        "name": "x",
+        "values": [
+          240
+        ]
+      },
+      {
+        "format": {
+          "emax": 10,
+          "emin": -10,
+          "p": 8
+        },
+        "name": "c",
+        "values": [
+          16
+        ]
+      },
+      {
+        "format": {
+          "emax": 10,
+          "emin": -10,
+          "p": 8
+        },
+        "name": "d",
+        "values": [
+          0
+        ]
+      }
+    ],
+    "outputs": [
+      "z"
+    ]
+  },
+  {
+    "cuts": [
+      1
+    ],
+    "delta_exp": -4,
+    "gates": [
+      {
+        "args": [
+          "x",
+          "x"
+        ],
+        "cell": {
+          "exponent": 3,
+          "kind": "normal",
+          "sign": 1
+        },
+        "format": {
+          "emax": 10,
+          "emin": -10,
+          "p": 4
+        },
+        "kind": "add",
+        "mode": "rne",
+        "out": [
+          "s"
+        ]
+      },
+      {
+        "args": [
+          "s",
+          "d"
+        ],
+        "cell": {
+          "exponent": 3,
+          "kind": "normal",
+          "sign": 1
+        },
+        "format": {
+          "emax": 10,
+          "emin": -10,
+          "p": 4
+        },
+        "kind": "add",
+        "mode": "rne",
+        "out": [
+          "z"
+        ]
+      }
+    ],
+    "id": "duplicate-wire",
+    "inputs": [
+      {
+        "format": {
+          "emax": 10,
+          "emin": -10,
+          "p": 8
+        },
+        "name": "x",
+        "values": [
+          128
+        ]
+      },
+      {
+        "format": {
+          "emax": 10,
+          "emin": -10,
+          "p": 8
+        },
+        "name": "c",
+        "values": [
+          7
+        ]
+      },
+      {
+        "format": {
+          "emax": 10,
+          "emin": -10,
+          "p": 8
+        },
+        "name": "d",
+        "values": [
+          8
+        ]
+      }
+    ],
+    "outputs": [
+      "z"
+    ]
+  },
+  {
+    "cuts": [
+      1
+    ],
+    "delta_exp": -4,
+    "gates": [
+      {
+        "args": [
+          "x",
+          "c"
+        ],
+        "cell": {
+          "exponent": 3,
+          "kind": "normal",
+          "sign": 1
+        },
+        "format": {
+          "emax": 10,
+          "emin": -10,
+          "p": 4
+        },
+        "kind": "split",
+        "mode": "rne",
+        "out": [
+          "s",
+          "r"
+        ],
+        "residual_format": {
+          "emax": 10,
+          "emin": 0,
+          "p": 2
+        }
+      },
+      {
+        "args": [
+          "r"
+        ],
+        "kind": "drop",
+        "out": [],
+        "window": [
+          -8,
+          8
+        ]
+      }
+    ],
+    "id": "residual-not-representable",
+    "inputs": [
+      {
+        "format": {
+          "emax": 10,
+          "emin": -10,
+          "p": 8
+        },
+        "name": "x",
+        "values": [
+          144,
+          145,
+          146,
+          147,
+          148,
+          149,
+          150,
+          151,
+          152,
+          153,
+          154,
+          155,
+          156,
+          157,
+          158,
+          159
+        ]
+      },
+      {
+        "format": {
+          "emax": 10,
+          "emin": -10,
+          "p": 8
+        },
+        "name": "c",
+        "values": [
+          7
+        ]
+      }
+    ],
+    "outputs": [
+      "s"
+    ]
+  }
+]

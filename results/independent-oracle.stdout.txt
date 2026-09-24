@@ -1,0 +1,14 @@
+{
+  "block_rows": 17782,
+  "concrete_rows": 12032,
+  "families": {
+    "census": 864,
+    "challenge": 320
+  },
+  "gate_checks": 29184,
+  "imports_project_code": false,
+  "networks": 1184,
+  "phase_rows": 12032,
+  "scope": "Independent explicit-format replay of the complete declared two-gate census and the deterministic three-gate structural challenge; not a general proof or an external replication.",
+  "status": "passed"
+}

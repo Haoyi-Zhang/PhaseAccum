@@ -1,0 +1,48 @@
+{
+  "comparisons": 4224,
+  "formats": 4,
+  "points_per_gap": 3,
+  "rounding_modes": 4,
+  "rows": [
+    {
+      "adjacent_intervals": 22,
+      "finite_values": 23,
+      "format": {
+        "emax": 2,
+        "emin": -2,
+        "p": 2
+      },
+      "mode_point_comparisons": 264
+    },
+    {
+      "adjacent_intervals": 46,
+      "finite_values": 47,
+      "format": {
+        "emax": 2,
+        "emin": -2,
+        "p": 3
+      },
+      "mode_point_comparisons": 552
+    },
+    {
+      "adjacent_intervals": 94,
+      "finite_values": 95,
+      "format": {
+        "emax": 2,
+        "emin": -2,
+        "p": 4
+      },
+      "mode_point_comparisons": 1128
+    },
+    {
+      "adjacent_intervals": 190,
+      "finite_values": 191,
+      "format": {
+        "emax": 2,
+        "emin": -2,
+        "p": 5
+      },
+      "mode_point_comparisons": 2280
+    }
+  ]
+}

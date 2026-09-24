@@ -1,0 +1,14 @@
+{
+  "cpu_affinity_available": 5,
+  "cpu_quota_cores": 4,
+  "memory_limit_bytes": 4294967296,
+  "memory_current_at_intake": 478965760,
+  "swap_total_kib": 0,
+  "disk_free_at_intake": 32029958144,
+  "selected_workers": 1,
+  "experiment_rss_cap_bytes": 2684354560,
+  "experiment_cpu_cap_seconds": 21600,
+  "per_run_wall_seconds": 120,
+  "archive_cap_bytes": 134217728,
+  "repair_reserve_fraction": 0.25
+}

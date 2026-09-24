@@ -1,0 +1,237 @@
+[
+  {
+    "id": "witness-binary32-binary16",
+    "minimality_scope": "Two is the worst-case shortest translated-add context length for absolute-error observations; not generic circuit minimization.",
+    "phase_state_lower_bound_power": 14,
+    "records": [
+      {
+        "c": "4095/8388608",
+        "d": "1/2048",
+        "exact_sum": "1027/1024",
+        "exponent": 0,
+        "first_result": "513/512",
+        "first_sum": "2053/2048",
+        "fraction_bits": "00000000100000000000001",
+        "run_features": {
+          "leading_ones": 0,
+          "leading_zeros": 8,
+          "trailing_ones": 1,
+          "trailing_zeros": 0
+        },
+        "second_result": "513/512",
+        "sign": 1,
+        "signed_loss": "1/1024",
+        "x": "8404993/8388608"
+      },
+      {
+        "c": "4095/8388608",
+        "d": "1/2048",
+        "exact_sum": "257/256",
+        "exponent": 0,
+        "first_result": "257/256",
+        "first_sum": "2055/2048",
+        "fraction_bits": "00000000110000000000001",
+        "run_features": {
+          "leading_ones": 0,
+          "leading_zeros": 8,
+          "trailing_ones": 1,
+          "trailing_zeros": 0
+        },
+        "second_result": "257/256",
+        "sign": 1,
+        "signed_loss": "0",
+        "x": "8413185/8388608"
+      }
+    ],
+    "source_precision": 24,
+    "target_precision": 11
+  },
+  {
+    "id": "witness-binary64-binary32",
+    "minimality_scope": "Two is the worst-case shortest translated-add context length for absolute-error observations; not generic circuit minimization.",
+    "phase_state_lower_bound_power": 30,
+    "records": [
+      {
+        "c": "268435455/4503599627370496",
+        "d": "1/16777216",
+        "exact_sum": "8388611/8388608",
+        "exponent": 0,
+        "first_result": "4194305/4194304",
+        "first_sum": "16777221/16777216",
+        "fraction_bits": "0000000000000000000001000000000000000000000000000001",
+        "run_features": {
+          "leading_ones": 0,
+          "leading_zeros": 21,
+          "trailing_ones": 1,
+          "trailing_zeros": 0
+        },
+        "second_result": "4194305/4194304",
+        "sign": 1,
+        "signed_loss": "1/8388608",
+        "x": "4503600701112321/4503599627370496"
+      },
+      {
+        "c": "268435455/4503599627370496",
+        "d": "1/16777216",
+        "exact_sum": "2097153/2097152",
+        "exponent": 0,
+        "first_result": "2097153/2097152",
+        "first_sum": "16777223/16777216",
+        "fraction_bits": "0000000000000000000001100000000000000000000000000001",
+        "run_features": {
+          "leading_ones": 0,
+          "leading_zeros": 21,
+          "trailing_ones": 1,
+          "trailing_zeros": 0
+        },
+        "second_result": "2097153/2097152",
+        "sign": 1,
+        "signed_loss": "0",
+        "x": "4503601237983233/4503599627370496"
+      }
+    ],
+    "source_precision": 53,
+    "target_precision": 24
+  },
+  {
+    "id": "witness-binary32-bfloat16",
+    "minimality_scope": "Two is the worst-case shortest translated-add context length for absolute-error observations; not generic circuit minimization.",
+    "phase_state_lower_bound_power": 17,
+    "records": [
+      {
+        "c": "32767/8388608",
+        "d": "1/256",
+        "exact_sum": "131/128",
+        "exponent": 0,
+        "first_result": "65/64",
+        "first_sum": "261/256",
+        "fraction_bits": "00000100000000000000001",
+        "run_features": {
+          "leading_ones": 0,
+          "leading_zeros": 5,
+          "trailing_ones": 1,
+          "trailing_zeros": 0
+        },
+        "second_result": "65/64",
+        "sign": 1,
+        "signed_loss": "1/128",
+        "x": "8519681/8388608"
+      },
+      {
+        "c": "32767/8388608",
+        "d": "1/256",
+        "exact_sum": "33/32",
+        "exponent": 0,
+        "first_result": "33/32",
+        "first_sum": "263/256",
+        "fraction_bits": "00000110000000000000001",
+        "run_features": {
+          "leading_ones": 0,
+          "leading_zeros": 5,
+          "trailing_ones": 1,
+          "trailing_zeros": 0
+        },
+        "second_result": "33/32",
+        "sign": 1,
+        "signed_loss": "0",
+        "x": "8585217/8388608"
+      }
+    ],
+    "source_precision": 24,
+    "target_precision": 8
+  },
+  {
+    "id": "witness-binary64-binary16",
+    "minimality_scope": "Two is the worst-case shortest translated-add context length for absolute-error observations; not generic circuit minimization.",
+    "phase_state_lower_bound_power": 43,
+    "records": [
+      {
+        "c": "2199023255551/4503599627370496",
+        "d": "1/2048",
+        "exact_sum": "1027/1024",
+        "exponent": 0,
+        "first_result": "513/512",
+        "first_sum": "2053/2048",
+        "fraction_bits": "0000000010000000000000000000000000000000000000000001",
+        "run_features": {
+          "leading_ones": 0,
+          "leading_zeros": 8,
+          "trailing_ones": 1,
+          "trailing_zeros": 0
+        },
+        "second_result": "513/512",
+        "sign": 1,
+        "signed_loss": "1/1024",
+        "x": "4512395720392705/4503599627370496"
+      },
+      {
+        "c": "2199023255551/4503599627370496",
+        "d": "1/2048",
+        "exact_sum": "257/256",
+        "exponent": 0,
+        "first_result": "257/256",
+        "first_sum": "2055/2048",
+        "fraction_bits": "0000000011000000000000000000000000000000000000000001",
+        "run_features": {
+          "leading_ones": 0,
+          "leading_zeros": 8,
+          "trailing_ones": 1,
+          "trailing_zeros": 0
+        },
+        "second_result": "257/256",
+        "sign": 1,
+        "signed_loss": "0",
+        "x": "4516793766903809/4503599627370496"
+      }
+    ],
+    "source_precision": 53,
+    "target_precision": 11
+  },
+  {
+    "id": "witness-toy8-toy4",
+    "minimality_scope": "Two is the worst-case shortest translated-add context length for absolute-error observations; not generic circuit minimization.",
+    "phase_state_lower_bound_power": 5,
+    "records": [
+      {
+        "c": "7/128",
+        "d": "1/16",
+        "exact_sum": "11/8",
+        "exponent": 0,
+        "first_result": "5/4",
+        "first_sum": "21/16",
+        "fraction_bits": "0100001",
+        "run_features": {
+          "leading_ones": 0,
+          "leading_zeros": 1,
+          "trailing_ones": 1,
+          "trailing_zeros": 0
+        },
+        "second_result": "5/4",
+        "sign": 1,
+        "signed_loss": "1/8",
+        "x": "161/128"
+      },
+      {
+        "c": "7/128",
+        "d": "1/16",
+        "exact_sum": "3/2",
+        "exponent": 0,
+        "first_result": "3/2",
+        "first_sum": "23/16",
+        "fraction_bits": "0110001",
+        "run_features": {
+          "leading_ones": 0,
+          "leading_zeros": 1,
+          "trailing_ones": 1,
+          "trailing_zeros": 0
+        },
+        "second_result": "3/2",
+        "sign": 1,
+        "signed_loss": "0",
+        "x": "177/128"
+      }
+    ],
+    "source_precision": 8,
+    "target_precision": 4
+  }
+]

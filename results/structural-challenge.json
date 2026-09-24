@@ -1,0 +1,43 @@
+{
+  "block_table_rows": 8422,
+  "boundary": "A deterministic structural challenge, not a blind statistical holdout and not evidence of real-program representativeness.",
+  "concrete_input_rows": 5120,
+  "definition": "All five ordered four-leaf binary-tree shapes, both signs, normal and central-subnormal cells, two precision schedules, eight mode schedules, and all 2^4 source tuples.",
+  "dimensions": {
+    "cell_regimes": [
+      "normal",
+      "subnormal"
+    ],
+    "mode_schedules": 8,
+    "precision_schedules": [
+      [
+        3,
+        5,
+        4
+      ],
+      [
+        5,
+        3,
+        4
+      ]
+    ],
+    "signs": [
+      "negative",
+      "positive"
+    ],
+    "source_support_size_per_input": 2,
+    "tree_shapes": [
+      "left",
+      "midleft",
+      "midright",
+      "right",
+      "balanced"
+    ]
+  },
+  "expected_networks": 320,
+  "max_depth": 3,
+  "max_gates": 3,
+  "networks": 320,
+  "phase_input_rows": 5120,
+  "status": "complete-over-declared-challenge-axes"
+}
