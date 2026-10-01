@@ -1,0 +1,19 @@
+{
+  "boundary": "Targeted regression for checker sensitivity; not an additional network or theorem proof.",
+  "formula_10_expected_bit": 0,
+  "full_formula_check_rejected": true,
+  "gap": 3,
+  "legacy_conditions_still_pass": true,
+  "legacy_separator_checks_after_mutation": 240,
+  "legacy_two_gate_classes_after_mutation": 16,
+  "mutated_bit": 1,
+  "mutation": {
+    "context": 1,
+    "from": 0,
+    "j": 2,
+    "r": 1,
+    "to": 1
+  },
+  "rejection_reason": "mutated observation word: formula (10) mismatch r=1 t=1 j=2",
+  "status": "rejected-by-full-formula-check"
+}

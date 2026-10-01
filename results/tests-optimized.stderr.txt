@@ -28,6 +28,6 @@ test_tampered_bound_rejected (test_core.ExactSemantics.test_tampered_bound_rejec
 test_three_rounding_paths_agree (test_core.ExactSemantics.test_three_rounding_paths_agree) ... ok
 
 ----------------------------------------------------------------------
-Ran 28 tests in 4.314s
+Ran 28 tests in 4.418s
 
 OK

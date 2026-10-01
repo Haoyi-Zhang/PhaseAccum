@@ -18,7 +18,7 @@
   "composition_source_rows_replayed": 128,
   "concrete_input_rows": 24700,
   "constructive_separator_checks": 21588,
-  "cpu_seconds": 7.212890649999999,
+  "cpu_seconds": 7.042425116,
   "evidence_boundary": "Finite rational-model replay, not a mechanized general proof or hardware benchmark.",
   "independent_oracle_input_rows": 12032,
   "independent_oracle_networks": 1184,
@@ -26,7 +26,10 @@
   "max_gates": 32,
   "mutations_rejected": 20,
   "networks": 1285,
-  "peak_rss_kib": 156516,
+  "observation_word_formula_checks": 21840,
+  "observation_word_mutation_rejections": 1,
+  "one_gate_class_count_checks": 6,
+  "peak_rss_kib": 156524,
   "phase_input_rows": 15900,
   "residual_alphabet_obligations": 400,
   "residual_membership_checks": 5160,
@@ -42,6 +45,6 @@
   "structural_challenge_input_rows": 5120,
   "structural_challenge_networks": 320,
   "unsupported_rejected": 5,
-  "wall_seconds": 7.214137728999958,
+  "wall_seconds": 7.042001054999986,
   "workers": 1
 }

@@ -12,15 +12,16 @@ From this directory, run:
 python reproduce.py
 ```
 
-The standard-library-only wrapper uses one worker, a 110-second lifecycle deadline, a 2 GiB child address-space limit, and five fail-closed stages:
+The standard-library-only wrapper uses one worker, a 110-second lifecycle deadline, a 2 GiB child address-space limit, and six fail-closed stages:
 
 1. bibliography and calibration inventory audit;
-2. 28 unit-test methods;
-3. deterministic campaign generation;
-4. an independent explicit-format whole-network oracle for the two exhaustive families;
-5. standalone serialized-certificate replay.
+2. 28 unit-test methods in normal interpreter mode;
+3. the identical 28-test suite under `python -O`;
+4. deterministic campaign generation;
+5. an independent explicit-format whole-network oracle for the two exhaustive families;
+6. standalone serialized-certificate replay.
 
-Every stage writes its stdout and stderr under `results/`. A fresh `results/reproduction.json` is written incrementally so an interrupted run cannot be mistaken for an earlier success.
+Every stage writes its stdout and stderr under `results/`. `results/python-runtime.json` records the interpreter version and measured normal/optimized flags; `results/reproduction.json` records each exact command, optimization level, exit code, log path, and resource measurement. Both files are regenerated, so an interrupted run cannot be mistaken for an earlier success.
 
 ## Retained finite evidence
 
@@ -32,12 +33,12 @@ A successful campaign retains:
 - a structurally different complete 320-network four-input/three-gate challenge with 5,120 rows;
 - an explicit-format whole-network oracle over all 1,184 census/challenge networks, 12,032 concrete rows, and 29,184 gate evaluations;
 - maximum executed size of 32 gates and depth 32;
-- 21,840 phase/context observations and 21,588 constructive separator checks;
+- 21,840 phase/context observations, each checked against formula (10), six explicit one-addition class-count checks, and 21,588 constructive separator checks;
 - 4,224 three-way exact rounding comparisons over four complete small formats;
 - 400 residual-alphabet configurations and 5,160 explicit membership checks;
 - 35 least-period configurations and 3,770 periodicity/minimality checks;
 - four standard-format residual witnesses;
-- 20 rejected certificate mutations and five rejected unsupported networks;
+- one targeted observation-word bit mutation rejected by the full formula check, plus 20 rejected certificate mutations and five rejected unsupported networks;
 - 94,067 designated finite obligations, below the project ceiling of 100,000.
 
 The 32-gate positive chain is additionally replayed under four cut partitions. Their local tables contain 4, 32, 128, and 32 rows, but all yield the same four-row global relation and maximum loss of three grid units.

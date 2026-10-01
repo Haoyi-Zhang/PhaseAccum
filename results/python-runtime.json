@@ -1,0 +1,25 @@
+{
+  "normal": {
+    "command": [
+      "/opt/pyvenv/bin/python",
+      "-c",
+      "import json,platform,sys; print(json.dumps({\"implementation\":platform.python_implementation(),\"python_version\":platform.python_version(),\"optimize\":sys.flags.optimize}))"
+    ],
+    "exit_code": 0,
+    "implementation": "CPython",
+    "optimize": 0,
+    "python_version": "3.13.5"
+  },
+  "optimized": {
+    "command": [
+      "/opt/pyvenv/bin/python",
+      "-O",
+      "-c",
+      "import json,platform,sys; print(json.dumps({\"implementation\":platform.python_implementation(),\"python_version\":platform.python_version(),\"optimize\":sys.flags.optimize}))"
+    ],
+    "exit_code": 0,
+    "implementation": "CPython",
+    "optimize": 1,
+    "python_version": "3.13.5"
+  }
+}

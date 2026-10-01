@@ -23,7 +23,7 @@ No statistical model is fitted. The nearest analogue of overfitting is code tail
 - a whole-network oracle that replays both families through a different implementation;
 - targeted deep, serial, balanced, residual, discard, and correlation cases;
 - certificate mutations and fail-closed unsupported cases;
-- optimized-Python execution and clean-extraction reruns.
+- a retained `python -O` rerun of the complete unit suite, with interpreter, command, exit, and log records, plus clean-extraction reruns.
 
 The challenge family was designed during review, not reserved before development, so it is not called a blind holdout. Exhaustiveness applies only to the axes named in its result JSON, not all networks, formats, values, or IEEE behaviors.
 

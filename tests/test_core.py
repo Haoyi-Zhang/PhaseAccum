@@ -9,7 +9,8 @@ from src import checker
 from src.semantics import Format,two,lattice_round
 from src.phase import build
 from src.campaign import (census_audit, structural_challenge_audit, residual_periods,
-                          rounding_oracle_audit, signatures)
+                          rounding_oracle_audit, signatures,
+                          observation_word_mutation_regression)
 from src.fixtures import (chain,fmt,suite,tiny_network_census,
                           structural_challenge_suite,unsupported_suite)
 
@@ -174,7 +175,7 @@ class ExactSemantics(unittest.TestCase):
             want=1 if m==1 else (2*m if mode=='nearest-even' else m)
             self.assertEqual(row['least_period_units'],want)
 
-    def test_mode_sensitive_alphabet_sharpness(self):
+    def test_mode_sensitive_alphabet_and_observation_word_mutation(self):
         # Directed one-addition contexts distinguish m phases by exactness.
         for m in (2,4,8,16):
             words=[]
@@ -182,9 +183,19 @@ class ExactSemantics(unittest.TestCase):
                 words.append(tuple((r+t)-lattice_round(r+t,m,'rdn')==0
                                    for t in range(m)))
             self.assertEqual(len(set(words)),m)
-        # Nearest two-addition contexts distinguish twice the spacing.
-        for row in signatures():
+        # Nearest two-addition contexts distinguish twice the spacing, and
+        # every stored bit is checked against formula (10), not only a base row.
+        rows=signatures()
+        for row in rows:
             self.assertEqual(row['two_gate_classes'],row['phases'])
+            self.assertEqual(row['one_gate_absolute_classes'],1<<row['gap'])
+            self.assertEqual(row['formula_10_bit_checks'],row['input_context_pairs'])
+        # This k=3 bit flip preserves all 16 classes and all 240 specified
+        # separators, but the complete formula check must reject it.
+        mutation=observation_word_mutation_regression(rows)
+        self.assertTrue(mutation['legacy_conditions_still_pass'])
+        self.assertEqual(mutation['legacy_separator_checks_after_mutation'],240)
+        self.assertTrue(mutation['full_formula_check_rejected'])
 
     def test_depth_independent_source_phase(self):
         ops=[(2,'rne',1),(4,'rup',3),(8,'rdn',5),(16,'rtz',7)]*8

@@ -16,21 +16,21 @@ The final deterministic campaign reports:
 - 15,900 initial joint-phase rows and 22,066 block rows;
 - 864 complete census networks and 320 complete structural-challenge networks;
 - 32 maximum gates and depth 32;
-- 21,840 observation pairs and 21,588 pair separators;
+- 21,840 observation bits individually checked against formula (10), six one-addition class counts checked against `m`, and 21,588 pair separators;
 - 4,224 complete-small-format three-way rounding comparisons;
 - 5,160 residual membership checks and 3,770 least-period checks;
-- 20 rejected certificate mutations and five rejected unsupported cases;
+- one targeted observation-word mutation regression, 20 rejected certificate mutations, and five rejected unsupported cases;
 - 94,067 designated finite obligations;
 - 122,805 base-checker round calls and 68,104 base-checker gate checks;
-- 7.214 wall seconds, 7.213 CPU seconds, and 156,516 KiB peak child RSS in the retained campaign run.
+- 7.042 wall seconds, 7.042 CPU seconds, and 156,524 KiB peak child RSS in the retained campaign run.
 
 The independent whole-network oracle separately replays 1,184 networks, 12,032 concrete rows, and 29,184 gate operations. It does not count as additional networks in the primary suite.
 
 ## End-to-end wrapper
 
-The retained five-stage `python reproduce.py` run records 22.111 wall seconds, 22.064 aggregate parent-plus-child CPU seconds, and 156,516 KiB peak child RSS. Exact timings vary by host and are measurements, not performance claims. Early exploratory work was not cumulatively metered.
+The retained six-stage `python reproduce.py` run records 29.466 wall seconds, 26.807 aggregate parent-plus-child CPU seconds, and 156,524 KiB peak child RSS. Exact timings vary by host and are measurements, not performance claims. Early exploratory work was not cumulatively metered.
 
-The five stages are bibliography audit, 28 unit tests, campaign generation, independent whole-network replay, and standalone certificate replay. All five exited with code zero. The same unit suite also passes under `python -O`, while production source is checked not to depend on `assert`.
+The six stages are bibliography audit, 28 normal-mode unit tests, the identical 28 tests under `python -O`, campaign generation, independent whole-network replay, and standalone certificate replay. All six exited with code zero. `results/python-runtime.json` records CPython 3.13.5 with optimization levels 0 and 1; `results/reproduction.json` records the exact commands, exit codes, and normal/optimized log paths. Production source is also checked not to contain Python `assert` statements.
 
 ## Trust and portability
 

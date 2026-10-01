@@ -19,6 +19,44 @@ def ensure(condition, message):
 def write(path, obj):
     path.write_text(json.dumps(obj,indent=2,sort_keys=True)+'\n')
 
+def observation_word_bit(r, context, m):
+    """Lemma 3.1 / formula (10) on the integer phase grid."""
+    n=2*m
+    j=(r+context)%n
+    return j==0 or m<=j<n
+
+
+def check_observation_word_formula(words, m, label='observation word'):
+    """Check every retained phase/context bit, not only one cyclic base row."""
+    n=2*m
+    ensure(len(words)==n, f'{label}: phase-row count')
+    checks=0
+    for r,row in enumerate(words):
+        ensure(len(row)==n, f'{label}: context count for r={r}')
+        for context,actual in enumerate(row):
+            expected=observation_word_bit(r,context,m)
+            j=(r+context)%n
+            ensure(actual==expected,
+                   f'{label}: formula (10) mismatch r={r} t={context} j={j}')
+            checks+=1
+    return checks
+
+
+def check_constructive_separators(words, m, label='separator'):
+    n=2*m
+    checks=0
+    for r in range(n):
+        for s in range(n):
+            if r==s:
+                continue
+            distance=(s-r)%n
+            context=((m-1 if distance<=m else 1)-r)%n
+            ensure(not words[r][context] and words[s][context],
+                   f'{label}: gap={m.bit_length()-1} r={r} s={s} t={context}')
+            checks+=1
+    return checks
+
+
 def signatures():
     grid=checker.explicit_values({'p':4,'emin':-10,'emax':10})
     result=[]
@@ -33,23 +71,55 @@ def signatures():
                 z=checker.explicit_round(y+Q(1,2),grid,'rne')
                 sig.append(abs(z-t-Q(1,2))<=Q(1,2));sg.append(int(abs(y-t)*m))
             signatures.append(tuple(sig));single.append(tuple(sg))
-        ensure(len(set(signatures))==n, f'two-add class count for gap {gap}')
-        ensure(all(single[r]==single[r+m] for r in range(m)), f'one-add periodicity for gap {gap}')
-        ensure(list(signatures[0])==[r==0 or r>=m for r in range(n)], f'observation word for gap {gap}')
-        for r in range(n):
-            for s in range(n):
-                if r==s:continue
-                distance=(s-r)%n
-                t=((m-1 if distance<=m else 1)-r)%n
-                ensure(not signatures[r][t] and signatures[s][t], f'separator gap={gap} r={r} s={s}')
+        formula_checks=check_observation_word_formula(signatures,m,
+                                                       f'observation word gap {gap}')
+        two_classes=len(set(signatures));one_classes=len(set(single))
+        ensure(two_classes==n, f'two-add class count for gap {gap}')
+        ensure(one_classes==m, f'one-add class count for gap {gap}')
+        ensure(all(single[r]==single[r+m] for r in range(m)),
+               f'one-add periodicity for gap {gap}')
+        separator_checks=check_constructive_separators(signatures,m)
 
-        result.append({'gap':gap,'phases':n,'contexts':n,'two_gate_classes':len(set(signatures)),
-                       'one_gate_absolute_classes':len(set(single)),'input_context_pairs':n*n,
-                       'oracle_gate_evaluations':2*n*n,'separator_checks':n*(n-1),
+        result.append({'gap':gap,'phases':n,'contexts':n,'two_gate_classes':two_classes,
+                       'one_gate_absolute_classes':one_classes,'one_gate_class_target':m,
+                       'input_context_pairs':n*n,'formula_10_bit_checks':formula_checks,
+                       'oracle_gate_evaluations':2*n*n,'separator_checks':separator_checks,
                        'observation_words':[''.join('1' if b else '0' for b in row) for row in signatures],
                        'one_gate_absolute_loss_units':single,
                        'base_observation_word':''.join('1' if x else '0' for x in signatures[0])})
     return result
+
+
+def observation_word_mutation_regression(signature_rows):
+    """A bit flip that evades the former aggregate checks must fail formula (10)."""
+    row=next(x for x in signature_rows if x['gap']==3)
+    m=1<<row['gap'];n=2*m
+    words=[[bit=='1' for bit in word] for word in row['observation_words']]
+    r=context=1;j=(r+context)%n
+    ensure(words[r][context] is False, 'mutation regression baseline changed')
+    words[r][context]=True
+    legacy_classes=len({tuple(word) for word in words})
+    ensure(legacy_classes==n, 'target mutation no longer preserves the class count')
+    legacy_separators=check_constructive_separators(words,m,'mutated legacy separator')
+    rejected=False;reason=''
+    try:
+        check_observation_word_formula(words,m,'mutated observation word')
+    except RuntimeError as exc:
+        rejected=True;reason=str(exc)
+    ensure(rejected, 'formula (10) accepted the targeted bit mutation')
+    return {
+        'status':'rejected-by-full-formula-check',
+        'gap':3,
+        'mutation':{'r':r,'context':context,'j':j,'from':0,'to':1},
+        'legacy_two_gate_classes_after_mutation':legacy_classes,
+        'legacy_separator_checks_after_mutation':legacy_separators,
+        'legacy_conditions_still_pass':True,
+        'formula_10_expected_bit':int(observation_word_bit(r,context,m)),
+        'mutated_bit':1,
+        'full_formula_check_rejected':True,
+        'rejection_reason':reason,
+        'boundary':'Targeted regression for checker sensitivity; not an additional network or theorem proof.'
+    }
 
 
 def rounding_oracle_audit():
@@ -395,7 +465,8 @@ def main():
     try:checker.check(c,s)
     except ValueError as e:mutant.append({'mutation':'correlation-erased-stale-contract','rejected':True,'reason':str(e)})
     else:raise AssertionError('erased correlation accepted')
-    sig=signatures();ablation=phase_loss_ablation();alphabets=residual_alphabets()
+    sig=signatures();word_mutation=observation_word_mutation_regression(sig)
+    ablation=phase_loss_ablation();alphabets=residual_alphabets()
     rounding=rounding_oracle_audit();census=census_audit(cases,rows)
     challenge=structural_challenge_audit(cases,rows)
     periods=residual_periods()
@@ -411,6 +482,7 @@ def main():
     write(ROOT/'results/standard-residual-witnesses.json',standard_residual_witnesses(cases))
     write(ROOT/'results/certificates.json',certs)
     write(ROOT/'results/signatures.json',sig)
+    write(ROOT/'results/observation-word-mutation.json',word_mutation)
     write(ROOT/'results/mutations.json',mutant)
     write(ROOT/'results/unsupported.json',unsupported)
     with (ROOT/'results/networks.csv').open('w',newline='') as f:
@@ -421,6 +493,9 @@ def main():
              'block_table_rows':sum(r['block_rows'] for r in rows),
              'max_gates':max(r['gates'] for r in rows),'max_depth':max(r['max_depth'] for r in rows),
              'signature_input_context_pairs':sum(r['input_context_pairs'] for r in sig),
+             'observation_word_formula_checks':sum(r['formula_10_bit_checks'] for r in sig),
+             'one_gate_class_count_checks':len(sig),
+             'observation_word_mutation_rejections':1,
              'constructive_separator_checks':sum(r['separator_checks'] for r in sig),
              'signature_oracle_gate_evaluations':sum(r['oracle_gate_evaluations'] for r in sig),
              'rounding_oracle_formats':rounding['formats'],
