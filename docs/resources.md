@@ -28,7 +28,7 @@ The independent whole-network oracle separately replays 1,184 networks, 12,032 c
 
 ## End-to-end wrapper
 
-The retained six-stage `python reproduce.py` run records 29.466 wall seconds, 26.807 aggregate parent-plus-child CPU seconds, and 156,524 KiB peak child RSS. Exact timings vary by host and are measurements, not performance claims. Early exploratory work was not cumulatively metered.
+The retained historical Linux six-stage `python reproduce.py` run records 29.466 wall seconds, 26.807 aggregate parent-plus-child CPU seconds, and 156,524 KiB peak child RSS. Exact timings vary by host and are measurements, not performance claims. Early exploratory work was not cumulatively metered.
 
 The six stages are bibliography audit, 28 normal-mode unit tests, the identical 28 tests under `python -O`, campaign generation, independent whole-network replay, and standalone certificate replay. All six exited with code zero. `results/python-runtime.json` records CPython 3.13.5 with optimization levels 0 and 1; `results/reproduction.json` records the exact commands, exit codes, and normal/optimized log paths. Production source is also checked not to contain Python `assert` statements.
 

@@ -1,0 +1,56 @@
+name: Scientific finite checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  finite-model:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    env:
+      PYTHONUTF8: '1'
+      PYTHONDONTWRITEBYTECODE: '1'
+      OMP_NUM_THREADS: '1'
+      OPENBLAS_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.12'
+      - name: Run all six fail-closed finite stages from the flat artifact root
+        shell: bash
+        run: |
+          set -euo pipefail
+          raw="$RUNNER_TEMP/p078-scientific-output"
+          mkdir -p "$raw"
+          unset PYTHONOPTIMIZE
+          set +e
+          timeout --signal=TERM --kill-after=5s 150s bash -c '
+            set -euo pipefail
+            ulimit -v 2097152
+            ulimit -t 130
+            ulimit -f 98304
+            python -B reproduce.py
+          ' >"$raw/run.stdout.txt" 2>"$raw/run.stderr.txt"
+          code=$?
+          set -e
+          printf '%s\n' "$code" >"$raw/exit-code.txt"
+          exit "$code"
+      - name: Upload raw output even after failure
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: p078-scientific-output
+          path: |
+            ${{ runner.temp }}/p078-scientific-output/
+            results/
+          if-no-files-found: error
+          retention-days: 14

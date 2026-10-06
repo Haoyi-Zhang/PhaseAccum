@@ -23,6 +23,13 @@ The standard-library-only wrapper uses one worker, a 110-second lifecycle deadli
 
 Every stage writes its stdout and stderr under `results/`. `results/python-runtime.json` records the interpreter version and measured normal/optimized flags; `results/reproduction.json` records each exact command, optimization level, exit code, log path, and resource measurement. Both files are regenerated, so an interrupted run cannot be mistaken for an earlier success.
 
+For a repository whose root is this artifact directory,
+`.github/workflows/scientific-checks.yml` runs these same six stages on Ubuntu
+24.04 for pushes to `main`, pull requests, or manual dispatch. The whole job has
+a five-minute deadline, the reproduction step has a 150-second outer timeout,
+and raw stdout/stderr and result files are uploaded even after failure. A local
+run is not evidence that this hosted workflow has executed.
+
 ## Retained finite evidence
 
 A successful campaign retains:
