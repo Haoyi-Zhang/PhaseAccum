@@ -1,0 +1,33 @@
+test_all_small_format_gap_rounding_oracles (test_core.ExactSemantics.test_all_small_format_gap_rounding_oracles) ... ok
+test_balanced_eight_input_topology (test_core.ExactSemantics.test_balanced_eight_input_topology) ... ok
+test_checker_is_source_independent_of_producer (test_core.ExactSemantics.test_checker_is_source_independent_of_producer) ... ok
+test_complete_tiny_network_census_axes (test_core.ExactSemantics.test_complete_tiny_network_census_axes) ... ok
+test_cut_change_recomputes_same_result (test_core.ExactSemantics.test_cut_change_recomputes_same_result) ... ok
+test_cut_partition_invariance_at_depth_32 (test_core.ExactSemantics.test_cut_partition_invariance_at_depth_32) ... ok
+test_depth_32_mixed_split_chain (test_core.ExactSemantics.test_depth_32_mixed_split_chain) ... ok
+test_depth_independent_source_phase (test_core.ExactSemantics.test_depth_independent_source_phase) ... ok
+test_duplicate_json_keys_rejected (test_core.ExactSemantics.test_duplicate_json_keys_rejected) ... ok
+test_fail_closed_boundaries (test_core.ExactSemantics.test_fail_closed_boundaries) ... ok
+test_independent_network_oracle_import_isolation (test_core.ExactSemantics.test_independent_network_oracle_import_isolation) ... ok
+test_integer_types (test_core.ExactSemantics.test_integer_types) ... ok
+test_lattice_period_and_missing_parity (test_core.ExactSemantics.test_lattice_period_and_missing_parity) ... ok
+test_least_residual_periods_all_modes (test_core.ExactSemantics.test_least_residual_periods_all_modes) ... ok
+test_mode_change_must_rebuild_certificate (test_core.ExactSemantics.test_mode_change_must_rebuild_certificate) ... ok
+test_mode_sensitive_alphabet_and_observation_word_mutation (test_core.ExactSemantics.test_mode_sensitive_alphabet_and_observation_word_mutation) ... ok
+test_nearest_exact_identity (test_core.ExactSemantics.test_nearest_exact_identity) ... ok
+test_negative_ties_and_subnormals (test_core.ExactSemantics.test_negative_ties_and_subnormals) ... ok
+test_nonfinite_json_constants_rejected (test_core.ExactSemantics.test_nonfinite_json_constants_rejected) ... ok
+test_production_sources_do_not_depend_on_assert (test_core.ExactSemantics.test_production_sources_do_not_depend_on_assert) ... ok
+test_retains_input_relation (test_core.ExactSemantics.test_retains_input_relation) ... ok
+test_retains_phase_loss_relation (test_core.ExactSemantics.test_retains_phase_loss_relation) ... ok
+test_seven_level_serial_accumulation (test_core.ExactSemantics.test_seven_level_serial_accumulation) ... ok
+test_split_conservation_and_drain (test_core.ExactSemantics.test_split_conservation_and_drain) ... ok
+test_strict_certificate_integer_types (test_core.ExactSemantics.test_strict_certificate_integer_types) ... ok
+test_structural_challenge_axes (test_core.ExactSemantics.test_structural_challenge_axes) ... ok
+test_tampered_bound_rejected (test_core.ExactSemantics.test_tampered_bound_rejected) ... ok
+test_three_rounding_paths_agree (test_core.ExactSemantics.test_three_rounding_paths_agree) ... ok
+
+----------------------------------------------------------------------
+Ran 28 tests in 7.579s
+
+OK

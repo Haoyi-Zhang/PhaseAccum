@@ -27,8 +27,15 @@ For a repository whose root is this artifact directory,
 `.github/workflows/scientific-checks.yml` runs these same six stages on Ubuntu
 24.04 for pushes to `main`, pull requests, or manual dispatch. The whole job has
 a five-minute deadline, the reproduction step has a 150-second outer timeout,
-and raw stdout/stderr and result files are uploaded even after failure. A local
-run is not evidence that this hosted workflow has executed.
+and raw stdout/stderr and result files are uploaded even after failure.
+
+The current Ubuntu/CPython 3.12.14 run completed all six stages, including 28
+tests in each interpreter mode. Sixteen numerical JSON payloads and every
+non-timing network CSV field matched retained evidence: 1,285 networks and
+24,700 concrete input rows. The whole wrapper used 42.30597899 wall seconds,
+40.865521573 CPU seconds including the parent, and 130,684 KiB peak child RSS.
+Compact current records are in `results/measurements/current-linux/`;
+historical host measurements have not been overwritten.
 
 ## Retained finite evidence
 

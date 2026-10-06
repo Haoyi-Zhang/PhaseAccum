@@ -1,0 +1,120 @@
+{
+  "child_address_space_limit_bytes": 2147483648,
+  "claim": "Finite exact-rational replay; not a mechanized general proof.",
+  "optimized_python_level": 1,
+  "parent_cpu_seconds": 0.07468457299999999,
+  "peak_child_rss_kib": 130684,
+  "python_runtime": "results/python-runtime.json",
+  "python_version": "3.12.14",
+  "status": "passed",
+  "steps": [
+    {
+      "child_cpu_seconds": 0.034721,
+      "command": [
+        "/opt/hostedtoolcache/Python/3.12.14/x64/bin/python",
+        "src/bibliography_audit.py"
+      ],
+      "exit_code": 0,
+      "optimization_level": 0,
+      "python_version": "3.12.14",
+      "stderr": "results/bibliography.stderr.txt",
+      "stdout": "results/bibliography.stdout.txt",
+      "timed_out": false,
+      "wall_seconds": 0.06613593499999837
+    },
+    {
+      "child_cpu_seconds": 8.100798,
+      "command": [
+        "/opt/hostedtoolcache/Python/3.12.14/x64/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "exit_code": 0,
+      "optimization_level": 0,
+      "python_version": "3.12.14",
+      "stderr": "results/tests.stderr.txt",
+      "stdout": "results/tests.stdout.txt",
+      "timed_out": false,
+      "wall_seconds": 8.250203819999996
+    },
+    {
+      "child_cpu_seconds": 7.955356999999999,
+      "command": [
+        "/opt/hostedtoolcache/Python/3.12.14/x64/bin/python",
+        "-O",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "exit_code": 0,
+      "optimization_level": 1,
+      "python_version": "3.12.14",
+      "stderr": "results/tests-optimized.stderr.txt",
+      "stdout": "results/tests-optimized.stdout.txt",
+      "timed_out": false,
+      "wall_seconds": 8.639207069000001
+    },
+    {
+      "child_cpu_seconds": 13.321629999999999,
+      "command": [
+        "/opt/hostedtoolcache/Python/3.12.14/x64/bin/python",
+        "-m",
+        "src.campaign"
+      ],
+      "exit_code": 0,
+      "optimization_level": 0,
+      "python_version": "3.12.14",
+      "stderr": "results/campaign.stderr.txt",
+      "stdout": "results/campaign.stdout.txt",
+      "timed_out": false,
+      "wall_seconds": 13.359443706000008
+    },
+    {
+      "child_cpu_seconds": 1.8734799999999994,
+      "command": [
+        "/opt/hostedtoolcache/Python/3.12.14/x64/bin/python",
+        "independent_oracle.py",
+        "--suite",
+        "inputs/suite.json",
+        "--certificates",
+        "results/certificates.json"
+      ],
+      "exit_code": 0,
+      "optimization_level": 0,
+      "python_version": "3.12.14",
+      "stderr": "results/independent-oracle.stderr.txt",
+      "stdout": "results/independent-oracle.stdout.txt",
+      "timed_out": false,
+      "wall_seconds": 1.9206844529999927
+    },
+    {
+      "child_cpu_seconds": 9.504851,
+      "command": [
+        "/opt/hostedtoolcache/Python/3.12.14/x64/bin/python",
+        "src/checker.py",
+        "--suite",
+        "inputs/suite.json",
+        "--certificates",
+        "results/certificates.json"
+      ],
+      "exit_code": 0,
+      "optimization_level": 0,
+      "python_version": "3.12.14",
+      "stderr": "results/replay.stderr.txt",
+      "stdout": "results/replay.stdout.txt",
+      "timed_out": false,
+      "wall_seconds": 9.540346861000003
+    }
+  ],
+  "total_cpu_seconds": 40.865521572999995,
+  "wall_limit_seconds": 110,
+  "wall_seconds": 42.30597899,
+  "workers": 1
+}
