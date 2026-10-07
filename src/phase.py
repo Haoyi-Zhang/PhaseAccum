@@ -145,6 +145,11 @@ def phase_inputs(case, modulus):
 
 
 def step(case,g,gi,state,loss,modulus):
+    """Standalone transfer retains on-demand validation of split constants."""
+    return _step(case,g,gi,state,loss,modulus,None)
+
+
+def _step(case,g,gi,state,loss,modulus,prepared_split):
     args=[state.pop(a) for a in g['args']]
     if g['kind']=='drop':
         a,b=g['window'];v=a+(args[0]-a)%modulus
@@ -154,8 +159,8 @@ def step(case,g,gi,state,loss,modulus):
     q=lattice_round(t,m,g['mode'],gi['negative']);rho=t-q
     state[g['out'][0]]=q%modulus
     if g['kind']=='split':
-        rf=Format.read(g['residual_format'])
-        if not rf.represents(rho*two(case['delta_exp'])): raise ValueError('unrepresentable exact residual')
+        rf,delta = (Format.read(g['residual_format']),two(case['delta_exp'])) if prepared_split is None else prepared_split
+        if not rf.represents(rho*delta): raise ValueError('unrepresentable exact residual')
         state[g['out'][1]]=rho%modulus
     else: loss+=rho
     return loss
@@ -163,6 +168,10 @@ def step(case,g,gi,state,loss,modulus):
 
 def build(case):
     meta,info,modulus=validate(case)
+    # Immutable constants belong to this validated build, not a gate-name cache.
+    delta=two(case['delta_exp']) if any(g['kind']=='split' for g in case['gates']) else None
+    split_constants=tuple((Format.read(g['residual_format']),delta) if g['kind']=='split' else None
+                          for g in case['gates'])
     inp=phase_inputs(case,modulus)
     names=[x['name'] for x in case['inputs']]
     boundaries=[0]+case['cuts']+[len(case['gates'])]
@@ -176,7 +185,8 @@ def build(case):
             key=tuple(state[n] for n in incoming)
             if key not in table:
                 s=dict(state);inc=0
-                for i in range(begin,end): inc=step(case,case['gates'][i],info[i],s,inc,modulus)
+                for i in range(begin,end):
+                    inc=_step(case,case['gates'][i],info[i],s,inc,modulus,split_constants[i])
                 outgoing=sorted(s)
                 table[key]=(tuple(s[n] for n in outgoing),inc)
             out,inc=table[key]

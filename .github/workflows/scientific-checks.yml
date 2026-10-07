@@ -38,6 +38,8 @@ jobs:
             ulimit -v 2097152
             ulimit -t 130
             ulimit -f 98304
+            python -B tests/regression_split_preparation.py
+            python -B -O tests/regression_split_preparation.py
             python -B reproduce.py
           ' >"$raw/run.stdout.txt" 2>"$raw/run.stderr.txt"
           code=$?

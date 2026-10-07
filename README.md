@@ -39,6 +39,8 @@ historical host measurements have not been overwritten.
 
 ## Retained finite evidence
 
+`python -B tests/regression_split_preparation.py` runs three supplementary portable regressions (also under `python -O` in scientific CI), separate from the retained 28-test census. They enumerate literal small-format split networks, compare full selected retained certificates, test four deep-chain cuts, per-build format isolation, reached-residual rejection and standalone transfers. The producer prepares immutable split formats and the exact dyadic unit once per validated build; every reached residual still receives its representability check. The independent checker, joint phase/loss relation, counters and frozen evidence are unchanged. This removes repeated preparation work, not a measured speedup or a broader numerical guarantee.
+
 A successful campaign retains:
 
 - 1,285 networks and 24,700 concrete input rows;
