@@ -1,6 +1,6 @@
 # Reference verification record
 
-The final manuscript contains 59 BibTeX entries and cites all 59. The paper-side parser checks balanced BibTeX entries, every `\\cite` key, missing and unused keys, duplicate persistent identifiers, and selected high-risk identifiers. The artifact-side audit freezes the same 59-key inventory and the declared 12+5+5 reading-calibration records.
+The manuscript contains 59 BibTeX entries and cites all 59. The paper-side parser checks balanced BibTeX entries, every `\\cite` key, missing and unused keys, duplicate persistent identifiers, and selected high-risk identifiers. The artifact-side audit uses the same 59-key inventory and its reading records.
 
 Identifier coverage is:
 
