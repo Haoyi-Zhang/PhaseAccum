@@ -20,4 +20,4 @@ reference audit. These are parsing checks, not live source or full-text checks.
 
 The 2026 direct-work records were rechecked against publisher, author, arXiv, ACM, Springer, conference, or HAL pages where accessible. The Hubrecht--Melquiond bibliographic record and ARITH 2026 program are public, but the HAL article body remained blocked by a human-verification page in the retained intake. The manuscript therefore makes only a bounded object-level comparison and no firstness, subsumption, or exhaustive-overlap claim.
 
-The complete live Information and Computation Guide for Authors was likewise not directly inspectable in this environment. The 21-page length is an internal project constraint, not asserted as a publisher limit. Human authors must recheck live submission, authorship, disclosure, ethics, data, repository, and AI-use rules before external submission.
+The recorded Information and Computation Guide for Authors retrieval was incomplete. The 21-page layout is a project constraint rather than a verified publisher limit.
