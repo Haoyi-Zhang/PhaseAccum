@@ -107,18 +107,21 @@ def case_rows(case):
 def prepare(case):
     req={'id','delta_exp','inputs','gates','outputs','cuts'}
     require(isinstance(case,dict) and req<=set(case) and not set(case)-req-{'relation'},'network fields')
+    require(all(isinstance(case[name],list) for name in ('inputs','gates','outputs','cuts')),'network array fields')
+    if 'relation' in case:
+        require(isinstance(case['relation'],list) and all(isinstance(row,list) for row in case['relation']),'relation array fields')
     require(isinstance(case['id'],str) and re.fullmatch('[a-z0-9-]{1,80}',case['id']),'identifier')
     int_ok(case['delta_exp']);require(-2048<=case['delta_exp']<=2048,'grid limits')
     delta=power(case['delta_exp'])
     require(1<=len(case['inputs'])<=8 and len(case['gates'])<=64,'dimensions')
     live={};seen=set();depth={};formats=set();max_gate_depth=0
     for inp in case['inputs']:
-        require(set(inp)=={'name','format','values'},'input fields')
+        require(isinstance(inp,dict) and set(inp)=={'name','format','values'},'input fields')
         name=inp['name']
         require(isinstance(name,str) and re.fullmatch('[a-z][a-z0-9]{0,15}',name) and name not in seen,'input name')
         seen.add(name);depth[name]=0
         fmt_ok(inp['format']);formats.add(tuple(sorted(inp['format'].items())))
-        vals=inp['values'];require(1<=len(vals)<=4096 and len(set(vals))==len(vals),'input support')
+        vals=inp['values'];require(isinstance(vals,list) and 1<=len(vals)<=4096 and len(set(vals))==len(vals),'input support')
         for v in vals:
             int_ok(v);require(round_value(v*delta,inp['format'])==v*delta,'input representability')
         live[name]=(min(vals),max(vals))
@@ -137,10 +140,12 @@ def prepare(case):
     require(cuts==sorted(set(cuts)) and all(type(c) is int and 0<c<len(case['gates']) for c in cuts),'cuts')
     modulus=1;infos=[]
     for g in case['gates']:
+        require(isinstance(g,dict),'gate fields')
         kind=g.get('kind');require(kind in ('add','cast','split','drop'),'kind')
         fields={'kind','args','out'}|({'window'} if kind=='drop' else {'format','mode','cell'})
         if kind=='split':fields.add('residual_format')
         require(set(g)==fields,'gate fields')
+        require(isinstance(g['args'],list) and isinstance(g['out'],list),'gate wire arrays')
         arity=1 if kind in ('cast','drop') else 2
         outputs=0 if kind=='drop' else 2 if kind=='split' else 1
         require(len(g['args'])==arity and len(set(g['args']))==arity and len(g['out'])==outputs,'arity')
@@ -153,7 +158,7 @@ def prepare(case):
             require(isinstance(a,str) and re.fullmatch('[a-z][a-z0-9]{0,15}',a) and a not in seen,'fresh wire')
             seen.add(a);depth[a]=d
         if kind=='drop':
-            require(len(g['window'])==2,'window arity')
+            require(isinstance(g['window'],list) and len(g['window'])==2,'window arity')
             a,b=g['window'];int_ok(a);int_ok(b)
             require(a<=lo<=hi<=b,'drop enclosure')
             modulus=max(modulus,1<<(b-a).bit_length())
@@ -162,6 +167,7 @@ def prepare(case):
         f=g['format'];fmt_ok(f);formats.add(tuple(sorted(f.items())))
         mode=g['mode'];require(mode in ('rne','rup','rdn','rtz'),'mode')
         cell=g['cell']
+        require(isinstance(cell,dict),'cell fields')
         if cell.get('kind')=='normal':
             require(set(cell)=={'kind','exponent','sign'},'normal cell fields')
             e,sgn=cell['exponent'],cell['sign'];int_ok(e);int_ok(sgn)

@@ -1,6 +1,6 @@
 """Deterministic, bounded finite validation; no external inputs or solvers."""
 from __future__ import annotations
-import copy, csv, json, os, resource, time
+import copy, csv, json, os, time
 from pathlib import Path
 from fractions import Fraction as Q
 from . import checker
@@ -439,6 +439,9 @@ of an error-free transformation or about the synthesis of a scalar kernel.
     return out
 
 def main():
+    # The campaign records POSIX peak RSS; pure numerical checks are portable.
+    import resource
+
     start=time.monotonic();cpu=time.process_time()
     cases=suite();bad=unsupported_suite()
     (ROOT/'inputs').mkdir(exist_ok=True);(ROOT/'results').mkdir(exist_ok=True)

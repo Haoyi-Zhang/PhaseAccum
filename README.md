@@ -29,7 +29,7 @@ For a repository whose root is this artifact directory,
 a five-minute deadline, the reproduction step has a 150-second outer timeout,
 and raw stdout/stderr and result files are uploaded even after failure.
 
-The current Ubuntu/CPython 3.12.14 run completed all six stages, including 28
+The retained Ubuntu/CPython 3.12.14 run completed all six stages, including 28
 tests in each interpreter mode. Sixteen numerical JSON payloads and every
 non-timing network CSV field matched retained evidence: 1,285 networks and
 24,700 concrete input rows. The whole wrapper used 42.30597899 wall seconds,
@@ -38,6 +38,13 @@ Compact current records are in `results/measurements/current-linux/`;
 historical host measurements have not been overwritten.
 
 ## Retained finite evidence
+
+Four supplementary container-schema tests run with
+`python -B tests/regression_schema_containers.py` and with `python -B -O`.
+Both numerical entry points require the documented JSON arrays and objects:
+single-wire strings are not array shorthand, and malformed object containers
+produce a validation error. These checks are separate from the retained
+28-method numerical test census and do not alter its network results.
 
 `python -B tests/regression_split_preparation.py` runs three supplementary portable regressions (also under `python -O` in scientific CI), separate from the retained 28-test census. They enumerate literal small-format split networks, compare full selected retained certificates, test four deep-chain cuts, per-build format isolation, reached-residual rejection and standalone transfers. The producer prepares immutable split formats and the exact dyadic unit once per validated build; every reached residual still receives its representability check. The independent checker, joint phase/loss relation, counters and frozen evidence are unchanged. This removes repeated preparation work, not a measured speedup or a broader numerical guarantee.
 
@@ -85,3 +92,8 @@ These are implementation-separated paths, not an external replication. They shar
 The model assumes a finite input relation, conservative acyclic wiring, a common dyadic grid, independently established fixed-spacing rounding cells, fixed sign for toward-zero cells, and representable exact residuals. It excludes NaNs, infinities, flags, overflow responses, flushing, implicit casts, arbitrary control flow, target-specific instructions, and independent linking of untrusted contracts.
 
 Python 3.10 or later on POSIX/Linux is expected. No network access, package installation, solver, GPU, private data, or external service is used.
+
+The numerical unit suite can also run on Windows with
+`python -B -m unittest discover -s tests -p test_core.py -v`.
+POSIX resource measurement is imported when the full campaign starts, not when
+the numerical test helpers are imported.

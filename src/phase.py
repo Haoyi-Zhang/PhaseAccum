@@ -20,8 +20,13 @@ def integer(x, what='integer'):
 
 def validate(case: dict) -> tuple[dict, list, int]:
     required = {'id','delta_exp','inputs','gates','outputs','cuts'}
-    if not required <= set(case) or set(case)-required-{'relation'}:
+    if not isinstance(case,dict) or not required <= set(case) or set(case)-required-{'relation'}:
         raise ValueError('network fields')
+    if any(not isinstance(case[name],list) for name in ('inputs','gates','outputs','cuts')):
+        raise ValueError('network array fields')
+    if 'relation' in case and (not isinstance(case['relation'],list) or
+                              any(not isinstance(row,list) for row in case['relation'])):
+        raise ValueError('relation array fields')
     if not isinstance(case['id'], str) or not re.fullmatch(r'[a-z0-9-]{1,80}',case['id']):
         raise ValueError('case identifier')
     de=integer(case['delta_exp'])
@@ -31,14 +36,14 @@ def validate(case: dict) -> tuple[dict, list, int]:
         raise ValueError('network dimensions')
     live={}; depth={}; seen=set(); fmt_set=set()
     for inp in case['inputs']:
-        if set(inp)!={'name','format','values'}: raise ValueError('input fields')
+        if not isinstance(inp,dict) or set(inp)!={'name','format','values'}: raise ValueError('input fields')
         name=inp['name']
         if not isinstance(name,str) or not re.fullmatch(r'[a-z][a-z0-9]{0,15}',name) or name in seen:
             raise ValueError('wire name')
         seen.add(name); depth[name]=0
         f=Format.read(inp['format']); fmt_set.add(f)
         vals=inp['values']
-        if not 1<=len(vals)<=4096 or len(set(vals))!=len(vals): raise ValueError('input support')
+        if not isinstance(vals,list) or not 1<=len(vals)<=4096 or len(set(vals))!=len(vals): raise ValueError('input support')
         for v in vals:
             integer(v)
             if not f.represents(v*delta): raise ValueError('input representability')
@@ -58,12 +63,15 @@ def validate(case: dict) -> tuple[dict, list, int]:
         if input_count>MAX_INPUT_ROWS: raise ValueError('concrete replay cap')
     info=[]; modulus=1; max_gate_depth=0
     for g in case['gates']:
+        if not isinstance(g,dict): raise ValueError('gate fields')
         kind=g.get('kind')
         if kind not in ('add','cast','split','drop'): raise ValueError('gate kind')
         base={'kind','args','out'}
         fields=base|({'window'} if kind=='drop' else {'format','mode','cell'})
         if kind=='split': fields|={'residual_format'}
         if set(g)!=fields: raise ValueError('gate fields')
+        if not isinstance(g['args'],list) or not isinstance(g['out'],list):
+            raise ValueError('gate wire arrays')
         arity=1 if kind in ('cast','drop') else 2
         out_arity=0 if kind=='drop' else 2 if kind=='split' else 1
         if len(g['args'])!=arity or len(set(g['args']))!=arity or len(g['out'])!=out_arity:
@@ -80,7 +88,7 @@ def validate(case: dict) -> tuple[dict, list, int]:
             seen.add(x);depth[x]=d
         if kind=='drop':
             win=g['window']
-            if len(win)!=2: raise ValueError('drop interval')
+            if not isinstance(win,list) or len(win)!=2: raise ValueError('drop interval')
             a,b=map(integer,win)
             if not a<=lo<=hi<=b: raise ValueError('drop enclosure')
             modulus=max(modulus,1<<(b-a).bit_length())
@@ -89,6 +97,7 @@ def validate(case: dict) -> tuple[dict, list, int]:
         f=Format.read(g['format']);fmt_set.add(f)
         mode=g['mode'];cell=g['cell']
         if mode not in MODES: raise ValueError('rounding mode')
+        if not isinstance(cell,dict): raise ValueError('cell fields')
         if cell.get('kind')=='normal' and set(cell)=={'kind','exponent','sign'}:
             e=integer(cell['exponent']); sign=integer(cell['sign'])
             if sign not in (-1,1) or not f.emin<=e<=f.emax: raise ValueError('normal cell')
