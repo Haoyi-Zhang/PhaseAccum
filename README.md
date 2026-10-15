@@ -6,11 +6,13 @@ The artifact is evidence for specified finite instances. It is **not** a proof a
 
 ## One-command reproduction
 
-From this directory, run:
+Use Python 3.10 or later on POSIX/Linux in a fresh disposable checkout or copy of this artifact. From that directory, run:
 
 ```sh
 python reproduce.py
 ```
+
+The runner has no output-directory option: it regenerates `inputs/suite.json`, `inputs/unsupported.json`, and its `results/` files in place, including logs and measurements. Keep the bundled evidence unchanged by running in a separate checkout or copy.
 
 The standard-library-only wrapper uses one worker, a 110-second lifecycle deadline, a 2 GiB child address-space limit, and six fail-closed stages:
 

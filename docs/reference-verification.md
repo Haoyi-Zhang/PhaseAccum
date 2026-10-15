@@ -20,4 +20,4 @@ reference audit. These are parsing checks, not live source or full-text checks.
 
 The 2026 direct-work records were rechecked against publisher, author, arXiv, ACM, Springer, conference, or HAL pages where accessible. The Hubrecht--Melquiond bibliographic record and ARITH 2026 program are public, but the HAL article body remained blocked by a human-verification page in the retained intake. The manuscript therefore makes only a bounded object-level comparison and no firstness, subsumption, or exhaustive-overlap claim.
 
-The recorded Information and Computation Guide for Authors retrieval was incomplete. The 21-page layout is a project constraint rather than a verified publisher limit.
+The recorded Information and Computation Guide for Authors retrieval was incomplete. No publisher page limit was verified in that intake.
