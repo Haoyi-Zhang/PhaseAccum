@@ -93,7 +93,9 @@ These are implementation-separated paths, not an external replication. They shar
 
 The model assumes a finite input relation, conservative acyclic wiring, a common dyadic grid, independently established fixed-spacing rounding cells, fixed sign for toward-zero cells, and representable exact residuals. It excludes NaNs, infinities, flags, overflow responses, flushing, implicit casts, arbitrary control flow, target-specific instructions, and independent linking of untrusted contracts.
 
-Python 3.10 or later on POSIX/Linux is expected. No network access, package installation, solver, GPU, private data, or external service is used.
+Python 3.10 or later on POSIX/Linux is expected for the scientific checks. They use no network access, package installation, solver, GPU, private data, or external service.
+
+The optional manuscript renderer uses Matplotlib: run `python -B figures/draw_diagrams.py` from this artifact, or add `--output-dir ../paper/figures` to rebuild the paper diagrams. It draws vectors directly without TeX and checks the rational two-addition witness. `--check` also compares fresh repeated exports. Install `matplotlib==3.10.7` before rebuilding the paper.
 
 The numerical unit suite can also run on Windows with
 `python -B -m unittest discover -s tests -p test_core.py -v`.

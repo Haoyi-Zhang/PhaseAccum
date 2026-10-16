@@ -48,6 +48,10 @@ jobs:
           set -e
           printf '%s\n' "$code" >"$raw/exit-code.txt"
           exit "$code"
+      - name: Check direct Python manuscript diagrams
+        run: |
+          python -m pip install "matplotlib==3.10.7"
+          python -B figures/draw_diagrams.py --check
       - name: Upload raw output even after failure
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
